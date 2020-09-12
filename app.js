@@ -10,8 +10,11 @@ var LocalStrategy=require('passport-local');
 var passportLocalMongoose=require('passport-local-mongoose');
 var User=require('./models/user');
 var flash =require('connect-flash');
-mongoose.connect("mongodb://localhost:27017/yelp_camp",{useNewUrlParser:true}); // connect mongoose to the dabasae server
+// mongoose.connect("mongodb://localhost:27017/yelp_camp",{useNewUrlParser:true}); // connect mongoose to the dabasae server
 
+mongoose.connect("mongodb+srv://akash:<password>@cluster0.yepmw.mongodb.net/<dbname>?retryWrites=true&w=majority",{useNewUrlParser:true}); // connect mongoose to the dabasae server
+
+mongodb+srv://akash:asdf123@#@cluster0.yepmw.mongodb.net/<dbname>?retryWrites=true&w=majority
 var methodOverride=require('method-override');
 app.use(methodOverride("_method"));
 var commentRoutes=require('./routes/comments');
