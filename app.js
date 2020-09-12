@@ -31,7 +31,7 @@ app.set("view engine","ejs");
 app.use(express.static(__dirname+"/public"));
 app.use(flash());
 const hostname='localhost';
-const port =3000;
+// const port =3000;
 //Express Session
 app.use(require("express-session")({
     secret:"this is my secret",
@@ -65,6 +65,10 @@ app.use(indexRoutes);
 app.use(commentRoutes);
 app.use(campgroundRoutes);
 
-app.listen(port,hostname,()=>{
-    console.log(`The Yelpcamp server is running at ${hostname}: ${port}`);
+// app.listen(port,hostname,()=>{
+//     console.log(`The Yelpcamp server is running at ${hostname}: ${port}`);
+// });
+var port = process.env.PORT || 3000;
+app.listen(port, function () {
+  console.log("Server Has Started!");
 });
