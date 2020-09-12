@@ -1,0 +1,79 @@
+<%- include("../partials/header") %>
+
+<div class="container" style="margin-top: 1rem;">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">Yelpcamp</p>
+            <div class="list-group">
+                <li class="list-group-item active">Info 1.0</li>
+                <li class="list-group-item">Info 2.0</li>
+                <li class="list-group-item">Info 3.0</li>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <img class="img-responsive" style="width: 100%;" src="<%= campgrounds.image %>">
+                <div class="caption-full">
+                    <!-- <span><h5 style="text-align:right;">Rs. 700/night</h5> -->
+                  <h5> <a href="/campgrounds"><%=campgrounds.name %></a> </h5>
+                    
+                    <p> <%=campgrounds.description%></p>
+                    <em><p>Submitted By - <%=campgrounds.author.username%></p></em>
+
+                    <% if( currentUser && campgrounds.author.id.equals(currentUser._id)) {%>
+                      <a class="btn btn-warning" href="/campgrounds/<%=campgrounds.id%>/edit">Edit</a>
+                     <form action="/campgrounds/<%=campgrounds._id%>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger">Delete</button></form>
+                        <%}%>
+                </div>
+               
+                
+            </div>
+
+        <hr>
+        <div class="card">
+            <div class="card-header">
+              Ratings
+            </div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <% campgrounds.comments.forEach(function(comment){ %>
+                    <div class="row">
+                        
+                        <div class="col-md-12">
+                            <p><%= comment.text %></p>
+                          <p>By <strong> <%= comment.author.username%></strong>
+                            <span class="text-right"> , 10 days ago</span></p>    
+                     <a class="btn btn-xs btn-warning" href="/campgrounds/<%=campground_id%>/comments/<%=comment._id%>/edit">Edit</a>
+                     <form  style="display:inline;" action="/campgrounds/<%=campgrounds._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                      <button class="btn btn-danger">Delete</button>
+                      
+                      </form>        
+                            
+                        </div>
+                    </div>
+                    <br>
+                
+                <% }) %>
+                
+                
+              
+              </blockquote>
+            </div>
+            
+          </div>
+    </div>
+
+
+
+
+
+
+<div>
+  
+</div>
+
+</div>
+<a class="btn btn-success"  href="/campgrounds/<%=campgrounds._id %>/comments/new">Add a review</a>
+</div>
+<%- include("../partials/footer") %>
