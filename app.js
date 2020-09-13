@@ -12,7 +12,7 @@ var User=require('./models/user');
 var flash =require('connect-flash');
 // mongoose.connect("mongodb://localhost:27017/yelp_camp",{useNewUrlParser:true, useUnifiedTopology: true}); // connect mongoose to the dabasae server
 
-mongoose.connect("mongodb+srv://akash:tnOBBbcThmkKwMDS@cluster0.yepmw.mongodb.net/<dbname>?retryWrites=true&w=majority",{
+mongoose.connect("mongodb+srv://<Insert user name here>:<insert password here>@cluster0.yepmw.mongodb.net/<dbname>?retryWrites=true&w=majority",{
     useNewUrlParser:true,
     useUnifiedTopology: true
 }); // connect mongoose to the dabasae server
@@ -34,7 +34,7 @@ const hostname='localhost';
 // const port =3000;
 //Express Session
 app.use(require("express-session")({
-    secret:"this is my secret",
+    secret:"<insert your secret>",
     resave:false,
     saveUninitialized:false
 }));
